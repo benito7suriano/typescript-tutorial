@@ -1,11 +1,10 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className='App'>
-      <h1>Hello world</h1>
+      <span className='heading'>taskify</span>
     </div>
   )
 }
