@@ -9,7 +9,6 @@ const App: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('submitting...')
     if (todo) {
       setTodos([
         ...todos,
@@ -20,15 +19,23 @@ const App: React.FC = () => {
         },
       ])
     }
-
     setTodo('')
-    console.log(todos)
   }
 
   return (
     <div className='App'>
       <span className='heading'>taskify</span>
-      <InputField todo={todo} setTodo={setTodo} handleSubmit={handleSubmit} />
+      <InputField
+        todo={todo}
+        setTodo={setTodo}
+        todos={todos}
+        handleSubmit={handleSubmit}
+      />
+      <ul>
+        {todos.map((t: Todo) => (
+          <li>{t.todo}</li>
+        ))}
+      </ul>
     </div>
   )
 }
