@@ -67,6 +67,10 @@
   font-size: 20px;
 }
 
+.todos__single--text:focus {
+  outline: none;
+}
+
 .todos__single--icons {
   display: flex;
 }
