@@ -8,7 +8,7 @@ import { TodosState } from './context/Context'
 
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>('')
-  const [todos, setTodos] = useState<Todo[]>([])
+  // const [todos, setTodos] = useState<Todo[]>([])
 
   const { state, dispatch } = TodosState()
 
@@ -16,9 +16,15 @@ const App: React.FC = () => {
     e.preventDefault()
     if (todo) {
       //TODO: dispatch action to update todo's
+      dispatch({
+        type: 'ADD',
+        payload: todo,
+      })
     }
     setTodo('')
   }
+
+  console.log('state', state)
 
   return (
     <div className='App'>
@@ -26,10 +32,10 @@ const App: React.FC = () => {
       <InputField
         todo={todo}
         setTodo={setTodo}
-        todos={todos}
+        todos={state}
         handleSubmit={handleSubmit}
       />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList todos={state} editTodos={dispatch} />
     </div>
   )
 }

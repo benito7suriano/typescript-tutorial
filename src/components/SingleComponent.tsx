@@ -7,15 +7,15 @@ import { Todo } from '../model'
 interface Props {
   todo: Todo
   todos: Todo[]
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+  editTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const SingleComponent = ({ todo, todos, setTodos }: Props) => {
+const SingleComponent = ({ todo, todos, editTodos }: Props) => {
   const [edit, setEdit] = useState<boolean>(false)
   const [editTodo, setEditTodo] = useState<string>(todo.todo)
 
   const handleDone = (id: number) => {
-    setTodos(
+    editTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
       ),
@@ -23,13 +23,13 @@ const SingleComponent = ({ todo, todos, setTodos }: Props) => {
   }
 
   const handleDelete = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id))
+    editTodos(todos.filter((todo) => todo.id !== id))
   }
 
   const handleEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault()
 
-    setTodos(
+    editTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, todo: editTodo } : todo,
       ),
