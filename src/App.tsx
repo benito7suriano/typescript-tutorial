@@ -7,10 +7,11 @@ import { Todo } from './model'
 import { TodosState } from './context/Context'
 
 const App: React.FC = () => {
-  const [todo, setTodo] = useState<string>('')
-  // const [todos, setTodos] = useState<Todo[]>([])
-
+  // global state containing Todo[]
   const { state, dispatch } = TodosState()
+
+  // local state for controlled input
+  const [todo, setTodo] = useState<string>('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -23,8 +24,6 @@ const App: React.FC = () => {
     }
     setTodo('')
   }
-
-  console.log('state', state)
 
   return (
     <div className='App'>

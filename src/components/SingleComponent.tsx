@@ -7,7 +7,7 @@ import { Todo } from '../model'
 interface Props {
   todo: Todo
   todos: Todo[]
-  editTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+  editTodos: React.Dispatch<any>
 }
 
 const SingleComponent = ({ todo, todos, editTodos }: Props) => {
@@ -15,11 +15,10 @@ const SingleComponent = ({ todo, todos, editTodos }: Props) => {
   const [editTodo, setEditTodo] = useState<string>(todo.todo)
 
   const handleDone = (id: number) => {
-    editTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
-      ),
-    )
+    editTodos({
+      type: 'DONE',
+      payload: id,
+    })
   }
 
   const handleDelete = (id: number) => {

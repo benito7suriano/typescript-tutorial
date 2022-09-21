@@ -5,7 +5,7 @@ import SingleComponent from './SingleComponent'
 
 interface Props {
   todos: Todo[]
-  editTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+  editTodos: React.Dispatch<any>
 }
 
 const TodoList = ({ todos, editTodos }: Props) => {
