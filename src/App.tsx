@@ -10,9 +10,7 @@ const App: React.FC = () => {
   const [todo, setTodo] = useState<string>('')
   const [todos, setTodos] = useState<Todo[]>([])
 
-  const { hello } = TodosState()
-
-  console.log(hello)
+  const { state, dispatch } = TodosState()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

@@ -6,11 +6,9 @@ import { todosReducer } from '../reducers/Reducers'
 const Todos = createContext<{
   state: Todo[]
   dispatch: React.Dispatch<any>
-  hello: string
 }>({
   state: [],
   dispatch: () => null,
-  hello: '',
 })
 
 interface Props {
@@ -20,13 +18,7 @@ interface Props {
 export const Context: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(todosReducer, [])
 
-  const hello = 'world'
-
-  return (
-    <Todos.Provider value={{ state, dispatch, hello }}>
-      {children}
-    </Todos.Provider>
-  )
+  return <Todos.Provider value={{ state, dispatch }}>{children}</Todos.Provider>
 }
 
 export const TodosState = () => {
