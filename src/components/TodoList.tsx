@@ -5,10 +5,10 @@ import SingleComponent from './SingleComponent'
 
 interface Props {
   todos: Todo[]
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+  editTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const TodoList = ({ todos, setTodos }: Props) => {
+const TodoList = ({ todos, editTodos }: Props) => {
   return (
     <ul>
       {todos.map((t) => (
@@ -16,7 +16,7 @@ const TodoList = ({ todos, setTodos }: Props) => {
           key={t.id}
           todo={t}
           todos={todos}
-          setTodos={setTodos}
+          editTodos={editTodos}
         />
       ))}
     </ul>
