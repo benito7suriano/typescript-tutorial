@@ -16,7 +16,6 @@ const App: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (todo) {
-      //TODO: dispatch action to update todo's
       dispatch({
         type: 'ADD',
         payload: todo,

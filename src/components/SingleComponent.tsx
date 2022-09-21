@@ -22,17 +22,13 @@ const SingleComponent = ({ todo, todos, editTodos }: Props) => {
   }
 
   const handleDelete = (id: number) => {
-    editTodos(todos.filter((todo) => todo.id !== id))
+    editTodos({ type: 'REMOVE', payload: id })
   }
 
   const handleEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault()
 
-    editTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, todo: editTodo } : todo,
-      ),
-    )
+    editTodos({ type: 'EDIT', payload: { id, newText: editTodo } })
     setEdit(false)
   }
 
