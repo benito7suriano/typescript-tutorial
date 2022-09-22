@@ -22,7 +22,17 @@ const TodoList = ({ todos, editTodos }: Props) => {
           />
         ))}
       </div>
-      <div className='todos remove'></div>
+      <div className='todos remove'>
+        <span className='todos__heading'>Completed Tasks</span>
+        {todos.map((t) => (
+          <SingleComponent
+            key={t.id}
+            todo={t}
+            todos={todos}
+            editTodos={editTodos}
+          />
+        ))}
+      </div>
     </div>
   )
 }
