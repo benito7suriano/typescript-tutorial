@@ -10,16 +10,20 @@ interface Props {
 
 const TodoList = ({ todos, editTodos }: Props) => {
   return (
-    <ul>
-      {todos.map((t) => (
-        <SingleComponent
-          key={t.id}
-          todo={t}
-          todos={todos}
-          editTodos={editTodos}
-        />
-      ))}
-    </ul>
+    <div className='container'>
+      <div className='todos'>
+        <span className='todos__heading'>Active Tasks</span>
+        {todos.map((t) => (
+          <SingleComponent
+            key={t.id}
+            todo={t}
+            todos={todos}
+            editTodos={editTodos}
+          />
+        ))}
+      </div>
+      <div className='todos remove'></div>
+    </div>
   )
 }
 
