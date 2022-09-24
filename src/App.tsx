@@ -3,6 +3,7 @@ import './App.css'
 import InputField from './components/InputField'
 import TodoList from './components/TodoList'
 import { Todo } from './model'
+import { DragDropContext } from 'react-beautiful-dnd'
 
 import { TodosState } from './context/Context'
 
@@ -26,21 +27,23 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className='App'>
-      <span className='heading'>taskify</span>
-      <InputField
-        todo={todo}
-        setTodo={setTodo}
-        todos={state}
-        handleSubmit={handleSubmit}
-      />
-      <TodoList
-        todos={state}
-        editTodos={dispatch}
-        completedTodos={completedTodos}
-        setCompletedTodos={setCompletedTodos}
-      />
-    </div>
+    <DragDropContext onDragEnd={() => ''}>
+      <div className='App'>
+        <span className='heading'>taskify</span>
+        <InputField
+          todo={todo}
+          setTodo={setTodo}
+          todos={state}
+          handleSubmit={handleSubmit}
+        />
+        <TodoList
+          todos={state}
+          editTodos={dispatch}
+          completedTodos={completedTodos}
+          setCompletedTodos={setCompletedTodos}
+        />
+      </div>
+    </DragDropContext>
   )
 }
 
