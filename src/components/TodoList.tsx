@@ -35,6 +35,7 @@ const TodoList = ({
                 editTodos={editTodos}
               />
             ))}
+            {provided.placeholder}
           </div>
         )}
       </Droppable>
@@ -54,6 +55,7 @@ const TodoList = ({
                 editTodos={setCompletedTodos}
               />
             ))}
+            {provided.placeholder}
           </div>
         )}
       </Droppable>
