@@ -11,12 +11,20 @@ interface Props {
   setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const TodoList = ({ todos, editTodos }: Props) => {
+const TodoList = ({
+  todos,
+  editTodos,
+  completedTodos,
+  setCompletedTodos,
+}: Props) => {
   return (
     <div className='container'>
       <Droppable droppableId='TodosList'>
-        {() => (
-          <div className='todos'>
+        {(provided) => (
+          <div
+            className='todos'
+            ref={provided.innerRef}
+            {...provided.droppableProps}>
             <span className='todos__heading'>Active Tasks</span>
             {todos.map((t) => (
               <SingleComponent
@@ -29,17 +37,24 @@ const TodoList = ({ todos, editTodos }: Props) => {
           </div>
         )}
       </Droppable>
-      <div className='todos remove'>
-        <span className='todos__heading'>Completed Tasks</span>
-        {todos.map((t) => (
-          <SingleComponent
-            key={t.id}
-            todo={t}
-            todos={todos}
-            editTodos={editTodos}
-          />
-        ))}
-      </div>
+      <Droppable droppableId='TodosRemove'>
+        {(provided) => (
+          <div
+            className='todos remove'
+            ref={provided.innerRef}
+            {...provided.droppableProps}>
+            <span className='todos__heading'>Completed Tasks</span>
+            {completedTodos.map((t) => (
+              <SingleComponent
+                key={t.id}
+                todo={t}
+                todos={completedTodos}
+                editTodos={setCompletedTodos}
+              />
+            ))}
+          </div>
+        )}
+      </Droppable>
     </div>
   )
 }
