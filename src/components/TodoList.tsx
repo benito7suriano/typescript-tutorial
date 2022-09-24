@@ -26,8 +26,9 @@ const TodoList = ({
             ref={provided.innerRef}
             {...provided.droppableProps}>
             <span className='todos__heading'>Active Tasks</span>
-            {todos.map((t) => (
+            {todos.map((t, i) => (
               <SingleComponent
+                index={i}
                 key={t.id}
                 todo={t}
                 todos={todos}
@@ -44,8 +45,9 @@ const TodoList = ({
             ref={provided.innerRef}
             {...provided.droppableProps}>
             <span className='todos__heading'>Completed Tasks</span>
-            {completedTodos.map((t) => (
+            {completedTodos.map((t, i) => (
               <SingleComponent
+                index={i}
                 key={t.id}
                 todo={t}
                 todos={completedTodos}
