@@ -6,6 +6,8 @@ import SingleComponent from './SingleComponent'
 interface Props {
   todos: Todo[]
   editTodos: React.Dispatch<any>
+  completedTodos: Todo[]
+  setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
 const TodoList = ({ todos, editTodos }: Props) => {

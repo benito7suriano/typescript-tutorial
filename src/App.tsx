@@ -34,7 +34,12 @@ const App: React.FC = () => {
         todos={state}
         handleSubmit={handleSubmit}
       />
-      <TodoList todos={state} editTodos={dispatch} />
+      <TodoList
+        todos={state}
+        editTodos={dispatch}
+        completedTodos={completedTodos}
+        setCompletedTodos={setCompletedTodos}
+      />
     </div>
   )
 }
