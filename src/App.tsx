@@ -12,6 +12,7 @@ const App: React.FC = () => {
 
   // local state for controlled input
   const [todo, setTodo] = useState<string>('')
+  const [completedTodos, setCompletedTodos] = useState<Todo[]>([])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
