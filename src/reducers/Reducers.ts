@@ -7,6 +7,7 @@ type Action =
   | { type: 'REMOVE'; payload: number }
   | { type: 'DONE'; payload: number }
   | { type: 'EDIT'; payload: EditInfo }
+  | { type: 'UPDATE'; payload: Todo[] }
 
 export const todosReducer = (state: Todo[], action: Action) => {
   switch (action.type) {
@@ -26,6 +27,8 @@ export const todosReducer = (state: Todo[], action: Action) => {
           ? { ...todo, todo: action.payload.newText }
           : todo,
       )
+    case 'UPDATE':
+      return [...action.payload]
     default:
       return state
   }
